@@ -8,9 +8,9 @@ const theatersRouter = require("./theaters/theaters.router");
 const reviewsRouter = require("./reviews/reviews.router");
 const moviesRouter = require("./movies/movies.router");
 
-app.use("/movies", theatersRouter);
+app.use("/theaters", theatersRouter);
 app.use("/reviews", reviewsRouter);
-app.use("./movies", moviesRouter);
+app.use("/movies", moviesRouter);
 
 app.use(cors());
 app.use(notFound);
