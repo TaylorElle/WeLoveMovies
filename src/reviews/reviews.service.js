@@ -17,12 +17,13 @@ function read(reviewId) {
 }
 
 //put:
-function update(reviewId) {
+function update(updatedReview) {
   return knex("reviews as r")
     .join("critics as c", "c.critic_id", "r.critic_id")
-    .where({ "r.review_id": reviewId })
+    .where({ "r.review_id": updatedReview.review_id })
     .groupBy("critic_id")
     .select("r.*", "c.*")
+    .update(updatedReview, "*")
     .then((results) => {
       results.forEach((oneResult) => {
         const criticArr = [];
