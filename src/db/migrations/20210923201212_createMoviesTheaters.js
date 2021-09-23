@@ -2,6 +2,7 @@ exports.up = function (knex) {
   return knex.schema.createTable("movies_theaters", (table) => {
     table.boolean("is_showing");
     table.integer("theater_id").unsigned().notNullable();
+    table.timestamps(true, true);
     table
       .foreign("theater_id")
       .references("theater_id")
