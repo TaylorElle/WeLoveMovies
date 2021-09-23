@@ -1,7 +1,6 @@
 const knex = require("../db/connection");
 const reduceProperties = require("../utils/reduce-properties");
 
-//return a list of all theaters, including the 'movies' each theatre is showing
 const reducedMovies = reduceProperties("theater_id", {
   movie_id: ["movies", null, "movie_id"],
   title: ["movies", null, "title"],

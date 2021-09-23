@@ -1,23 +1,18 @@
 const service = require("./movies.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
-const { theaters } = require("../theaters/theaters.controller");
 
 async function movieExists(req, res, next) {
   const { movieId } = req.params;
-  // console.log(req.query);
   const movie = await service.read(movieId);
   if (movie) {
     res.locals.movie = movie;
-    // console.log(res.locals.movie);
     return next();
   }
-  // console.log("not found");
   return next({ status: 404, error: "Movie cannot be found." });
 }
 
 async function read(req, res) {
   const movie = res.locals.movie;
-  // console.log(movie);
   res.json({ data: movie });
 }
 
@@ -36,9 +31,7 @@ async function readMoviesAndTheaters(req, res) {
 
 async function listReviews(req, res) {
   const { movieId } = req.params;
-  // console.log(movieId);
   const criticsAndReviews = await service.listReviews(movieId);
-  // console.log(criticsAndReviews);
   res.json({ data: criticsAndReviews });
 }
 
