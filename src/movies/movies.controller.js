@@ -36,9 +36,9 @@ async function readMoviesAndTheaters(req, res) {
 
 async function listReviews(req, res) {
   const { movieId } = req.params;
-  console.log(movieId);
+  // console.log(movieId);
   const criticsAndReviews = await service.listReviews(movieId);
-  console.log(criticsAndReviews);
+  // console.log(criticsAndReviews);
   res.json({ data: criticsAndReviews });
 }
 

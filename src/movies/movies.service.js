@@ -43,14 +43,10 @@ function listReviews(movieId) {
     .select("*")
     .where({ "r.movie_id": movieId })
     .then((result) => {
-      console.log(result);
       const criticArr = [];
-      console.log(criticArr);
       result.forEach((item) => {
         const addedCritic = mappedCritics(item);
-        console.log(addedCritic);
         criticArr.push(addedCritic);
-        console.log(criticArr);
       });
 
       return criticArr;
