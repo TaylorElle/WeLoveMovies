@@ -1,5 +1,6 @@
 exports.up = function (knex) {
   return knex.schema.createTable("reviews", (table) => {
+    table.integer("review_id").primary().unsigned().notNullable();
     table.text("content").notNullable();
     table.integer("score");
     table.integer("critic_id").unsigned().notNullable();
